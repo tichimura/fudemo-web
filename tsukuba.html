@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>Display a popup on hover</title>
+<title>MAFF Digital Map Demo</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css" rel="stylesheet" />
@@ -336,7 +336,7 @@ type="text/css"
         container: 'map',
         style: satellitestyle + '/draft',
         center: [140.0696847,36.07774588],
-        zoom: 16
+        zoom: 17.2
     });    
 
 
@@ -384,144 +384,201 @@ type="text/css"
         trackUserLocation: true
     }));
 
-
-    //TODO: duplicated for addSource, addLayer, should be changed with functions.
-    map.on('styledata', function() {
-
-        if(map.getSource('tsukuba-fudesource') === undefined){
-
-            // console.log(map.loaded());
-            // console.log(map.isStyleLoaded());
-            // console.log("error is happened.");
+    function addingLayers(){
 
         map.addSource('tsukuba-fudesource',{
-            type: 'geojson',
-            generateId: true,
-            data: 'https://gist.githubusercontent.com/tichimura/ca9df3145633ba178a41e68b9a727055/raw/af822725260a808787cc6d2c8d63eb55ebc337db/tsukuba_fude_polygon.geojson'
-        })
+                type: 'geojson',
+                generateId: true,
+                data: 'https://gist.githubusercontent.com/tichimura/ca9df3145633ba178a41e68b9a727055/raw/8f34284932a7cad012deb7c8c60a9996a7246b30/tsukuba_fude_polygon.geojson'
+            })
 
         map.addSource('tsukuba-target',  {
-            type: 'geojson',
-            promoteId: 'targetId',
-            data: {
-                "features": [
-                    
-                { "type": "Feature", "properties": {                         
-                        "受け人氏名": "田中　太郎",
-                        "受け人住所": "東京都新宿区新宿1丁目1-1",
-                        "受け人職業": "農業",
-                        "申請代理人": "鈴木 花子",
-                        "申請代理人住所": "東京都新宿区新宿1丁目2-2",
-                        "取得形態": "",
-                        "取得資金": "",
-                        "売買賃借料": "",
-                        "物納": "",
-                        "単位": "",
-                        "利用者報告対象": "",
-                        "納税猶予": "",
-                        "発生日": "2020/1/31",
-                        "適用日": "2020/2/1",
-                        "農年処分": "",
-                        "適用日": "",
-                        "受理年月日": "2019/12/15",
-                        "開始年月日": "2020/2/1",
-                        "終了年月日": "",
-                        "備考": "",
-                        "所在・地番": "茨城県つくば市面野井字面野井1500", "面積": 1729.0, "地目": "田", "緯度": 36.07774588, "経度": 140.0696847, "耕作者": "204eea145e6c5970d4fb7f85d4d0e3c9", "農振法区分": "調査中", "都市計画法": "市街化調整区域", "所有者の農": "非公表", "権利の種類": "賃借権等の設定がない", "存続期間始": null, "存続期間終": null, "農地中間管": "農地中間管理権が設定されていない", "遊休農地か": "遊休農地ではない", "利用状況調": null, "所有者等の": "調査中", "所有者等を": null, "遊休農地の": "調査対象外", "利用意向調": null, "農地中間_1": null, "農地中間_2": null, "措置命令日": null, "所有者等_1": null, "筆ポリ中心": "POINT (140.069713599975 36.077739495793665)" }, "bbox": [ 140.069714, 36.077739, 140.069714, 36.077739 ], "geometry": { "type": "Point", "coordinates": [ 140.069714, 36.077739 ] } },
-                { "type": "Feature", "properties": {                         
-                        "受け人氏名": "田中　太郎",
-                        "受け人住所": "東京都新宿区新宿1丁目1-1",
-                        "受け人職業": "農業",
-                        "申請代理人": "鈴木 花子",
-                        "申請代理人住所": "東京都新宿区新宿1丁目2-2",
-                        "取得形態": "",
-                        "取得資金": "",
-                        "売買賃借料": "",
-                        "物納": "",
-                        "単位": "",
-                        "利用者報告対象": "",
-                        "納税猶予": "",
-                        "発生日": "2020/1/31",
-                        "適用日": "2020/2/1",
-                        "農年処分": "",
-                        "適用日": "",
-                        "受理年月日": "2019/12/15",
-                        "開始年月日": "2020/2/1",
-                        "終了年月日": "",
-                        "備考": "",
-                        "所在・地番": "茨城県つくば市面野井字面野井1501", "面積": 1260.0, "地目": "田", "緯度": 36.07774278, "経度": 140.0698561, "耕作者": "204eea145e6c5970d4fb7f85d4d0e3c9", "農振法区分": "調査中", "都市計画法": "市街化調整区域", "所有者の農": "非公表", "権利の種類": "賃借権等の設定がない", "存続期間始": null, "存続期間終": null, "農地中間管": "農地中間管理権が設定されていない", "遊休農地か": "遊休農地（不耕作）", "利用状況調": null, "所有者等の": "調査中", "所有者等を": null, "遊休農地の": "調査対象外", "利用意向調": null, "農地中間_1": null, "農地中間_2": null, "措置命令日": null, "所有者等_1": null, "筆ポリ中心": "POINT (140.069889758085 36.077734262903718)" }, "bbox": [ 140.06989, 36.077734, 140.06989, 36.077734 ], "geometry": { "type": "Point", "coordinates": [ 140.06989, 36.077734 ] } },
-                { "type": "Feature", "properties": {                         
-                        "受け人氏名": "田中　太郎",
-                        "受け人住所": "東京都新宿区新宿1丁目1-1",
-                        "受け人職業": "農業",
-                        "申請代理人": "鈴木 花子",
-                        "申請代理人住所": "東京都新宿区新宿1丁目2-2",
-                        "取得形態": "",
-                        "取得資金": "",
-                        "売買賃借料": "",
-                        "物納": "",
-                        "単位": "",
-                        "利用者報告対象": "",
-                        "納税猶予": "",
-                        "発生日": "2020/1/31",
-                        "適用日": "2020/2/1",
-                        "農年処分": "",
-                        "適用日": "",
-                        "受理年月日": "2019/12/15",
-                        "開始年月日": "2020/2/1",
-                        "終了年月日": "",
-                        "備考": "",
-                        "所在・地番": "茨城県つくば市面野井字面野井1502", "面積": 1056.0, "地目": "田", "緯度": 36.07736756, "経度": 140.0699978, "耕作者": "204eea145e6c5970d4fb7f85d4d0e3c9", "農振法区分": "調査中", "都市計画法": "市街化調整区域", "所有者の農": "非公表", "権利の種類": "その他の権利", "存続期間始": null, "存続期間終": null, "農地中間管": "農地中間管理権が設定されていない", "遊休農地か": "遊休農地ではない", "利用状況調": null, "所有者等の": "調査中", "所有者等を": null, "遊休農地の": "調査対象外", "利用意向調": null, "農地中間_1": null, "農地中間_2": null, "措置命令日": null, "所有者等_1": null, "筆ポリ中心": "POINT (140.07003360739222 36.07736361151904)" }, "bbox": [ 140.070034, 36.077364, 140.070034, 36.077364 ], "geometry": { "type": "Point", "coordinates": [ 140.070034, 36.077364 ] } }
+                type: 'geojson',
+                promoteId: 'targetId',
+                data: {
+                    "features": [                    
+                    { 
+                        "type": "Feature", 
+                        "properties": {                         
+                            "受け人氏名": "田中　太郎",
+                            "受け人住所": "東京都新宿区新宿1丁目1-1",
+                            "受け人職業": "農業",
+                            "申請代理人": "鈴木 花子",
+                            "申請代理人住所": "東京都新宿区新宿1丁目2-2",
+                            "取得形態": "",
+                            "取得資金": "",
+                            "売買賃借料": "",
+                            "物納": "",
+                            "単位": "",
+                            "利用者報告対象": "",
+                            "納税猶予": "",
+                            "発生日": "2020/1/31",
+                            "適用日": "2020/2/1",
+                            "農年処分": "",
+                            "適用日": "",
+                            "受理年月日": "2019/12/15",
+                            "開始年月日": "2020/2/1",
+                            "終了年月日": "",
+                            "備考": "",
+                            "所在・地番": "茨城県つくば市面野井字面野井1500", 
+                            "面積": 1729.0, 
+                            "地目": "田", 
+                            "緯度": 36.07774588, 
+                            "経度": 140.0696847, 
+                            "耕作者": "204eea145e6c5970d4fb7f85d4d0e3c9", 
+                            "農振法区分": "調査中", 
+                            "都市計画法": "市街化調整区域", 
+                            "所有者の農": "非公表", 
+                            "権利の種類": "賃借権等の設定がない", 
+                            "存続期間始": null, 
+                            "存続期間終": null, 
+                            "農地中間管": "農地中間管理権が設定されていない", 
+                            "遊休農地か": "遊休農地ではない", 
+                            "利用状況調": null, 
+                            "所有者等の": "調査中", 
+                            "所有者等を": null, 
+                            "遊休農地の": "調査対象外", 
+                            "利用意向調": null, 
+                            "農地中間_1": null, 
+                            "農地中間_2": null, 
+                            "措置命令日": null, 
+                            "所有者等_1": null, 
+                            "筆ポリ中心": "POINT (140.069713599975 36.077739495793665)",
+                            targetId: 1 
+                        }, 
+                        "bbox": [ 140.069714, 36.077739, 140.069714, 36.077739 ], 
+                        "geometry": { 
+                            "type": "Point", 
+                            "coordinates": [ 140.069714, 36.077739 ] 
+                        },
+                    },
+                    { 
+                        "type": "Feature", "properties": {                         
+                            "受け人氏名": "田中　太郎",
+                            "受け人住所": "東京都新宿区新宿1丁目1-1",
+                            "受け人職業": "農業",
+                            "申請代理人": "鈴木 花子",
+                            "申請代理人住所": "東京都新宿区新宿1丁目2-2",
+                            "取得形態": "",
+                            "取得資金": "",
+                            "売買賃借料": "",
+                            "物納": "",
+                            "単位": "",
+                            "利用者報告対象": "",
+                            "納税猶予": "",
+                            "発生日": "2020/1/31",
+                            "適用日": "2020/2/1",
+                            "農年処分": "",
+                            "適用日": "",
+                            "受理年月日": "2019/12/15",
+                            "開始年月日": "2020/2/1",
+                            "終了年月日": "",
+                            "備考": "",
+                            "所在・地番": "茨城県つくば市面野井字面野井1501", 
+                            "面積": 1260.0, 
+                            "地目": "田", 
+                            "緯度": 36.07774278, 
+                            "経度": 140.0698561, 
+                            "耕作者": "204eea145e6c5970d4fb7f85d4d0e3c9", 
+                            "農振法区分": "調査中", 
+                            "都市計画法": "市街化調整区域", 
+                            "所有者の農": "非公表", 
+                            "権利の種類": "賃借権等の設定がない", 
+                            "存続期間始": null, 
+                            "存続期間終": null, 
+                            "農地中間管": "農地中間管理権が設定されていない", 
+                            "遊休農地か": "遊休農地（不耕作）", 
+                            "利用状況調": null, 
+                            "所有者等の": "調査中", 
+                            "所有者等を": null, 
+                            "遊休農地の": "調査対象外", 
+                            "利用意向調": null, 
+                            "農地中間_1": null, 
+                            "農地中間_2": null, 
+                            "措置命令日": null, 
+                            "所有者等_1": null, 
+                            "筆ポリ中心": "POINT (140.069889758085 36.077734262903718)",
+                            targetId: 2
+                        }, 
+                        "bbox": [ 140.06989, 36.077734, 140.06989, 36.077734 ], 
+                        "geometry": { 
+                            "type": "Point", 
+                            "coordinates": [ 140.06989, 36.077734 ] 
+                        } 
+                    },
+                    {
+                        "type": "Feature", 
+                        "properties": {                         
+                            "受け人氏名": "田中　太郎",
+                            "受け人住所": "東京都新宿区新宿1丁目1-1",
+                            "受け人職業": "農業",
+                            "申請代理人": "鈴木 花子",
+                            "申請代理人住所": "東京都新宿区新宿1丁目2-2",
+                            "取得形態": "",
+                            "取得資金": "",
+                            "売買賃借料": "",
+                            "物納": "",
+                            "単位": "",
+                            "利用者報告対象": "",
+                            "納税猶予": "",
+                            "発生日": "2020/1/31",
+                            "適用日": "2020/2/1",
+                            "農年処分": "",
+                            "適用日": "",
+                            "受理年月日": "2019/12/15",
+                            "開始年月日": "2020/2/1",
+                            "終了年月日": "",
+                            "備考": "",
+                            "所在・地番": "茨城県つくば市面野井字面野井1502", 
+                            "面積": 1056.0, 
+                            "地目": "田", 
+                            "緯度": 36.07736756, 
+                            "経度": 140.0699978, 
+                            "耕作者": "204eea145e6c5970d4fb7f85d4d0e3c9", 
+                            "農振法区分": "調査中", 
+                            "都市計画法": "市街化調整区域", 
+                            "所有者の農": "非公表", 
+                            "権利の種類": "その他の権利", 
+                            "存続期間始": null, 
+                            "存続期間終": null, 
+                            "農地中間管": "農地中間管理権が設定されていない", 
+                            "遊休農地か": "遊休農地ではない", 
+                            "利用状況調": null, 
+                            "所有者等の": "調査中", 
+                            "所有者等を": null, 
+                            "遊休農地の": "調査対象外", 
+                            "利用意向調": null, 
+                            "農地中間_1": null, 
+                            "農地中間_2": null, 
+                            "措置命令日": null, 
+                            "所有者等_1": null, 
+                            "筆ポリ中心": "POINT (140.07003360739222 36.07736361151904)",
+                            targetId: 3
+                        }, 
+                        "bbox": [ 140.070034, 36.077364, 140.070034, 36.077364 ], 
+                        "geometry": { 
+                            "type": "Point", 
+                            "coordinates": [ 140.070034, 36.077364 ] 
+                            } 
+                    }
                 ],
-                "type": "FeatureCollection"
-            }            
-        });        
-        
-        var hoveredStateId = null;
+                    "type": "FeatureCollection"
+                }            
+            });        
+            
 
         addLayers();
 
         function addLayers(){
 
-        map.addLayer({
-            'id': 'tsukuba-target-fudepolygon',
-            'type': 'fill',
-            'source': 'tsukuba-fudesource',
-            'layout': {},
-            'paint': {
-                'fill-color': 
-                [
-                "match",
-                ["feature-state", "color"],
-                ["#faf000"],
-                "#faf000",
-                ["#0041ff"],
-                "#0041ff",
-                ["#ff99a0"],
-                "#ff99a0",
-                ["#00cc00"],
-                "#00cc00",
-                ["#ff8700"],
-                "#ff8700",
-                ["#66ccff"],
-                "#66ccff",
-                ["#808080"],
-                "#808080",
-                ["#a9a9a9"],
-                "#a9a9a9",
-                "hsla(0, 0%, 0%, 0)"
-                ],
-                'fill-opacity': 0.5
-            }
-        },'tsukuba-fudepoints');  
-
-        map.addLayer({
-            id: 'tsukuba-target-circle',
-            source: 'tsukuba-target',
-            type: 'circle',
-            paint:{
-                'circle-color': 
-                [
+            map.addLayer({
+                'id': 'tsukuba-target-fudepolygon',
+                'type': 'fill',
+                'source': 'tsukuba-fudesource',
+                'layout': {},
+                'paint': {
+                    'fill-color': 
+                    [
                     "match",
                     ["feature-state", "color"],
                     ["#faf000"],
@@ -540,37 +597,78 @@ type="text/css"
                     "#808080",
                     ["#a9a9a9"],
                     "#a9a9a9",
-                    "#008000"
-                ],
-                'circle-radius': 12,
-                'circle-stroke-color': "#aaaaaa",
-                'circle-stroke-width': 8
-            }
-        });
+                    "hsla(0, 0%, 0%, 0)"
+                    ],
+                    'fill-opacity': 0.5
+                }
+            },'tsukuba-fudepoints');  
 
-        map.addLayer({
-            id: 'tsukuba-target-symbol',
-            source: 'tsukuba-target',
-            type: 'symbol',
-            paint:{
-                'text-color':
-                [
-                    "match",
-                    ["feature-state", "color"],
-                    ["#ffffff"],
-                    "#ffffff",
-                    "#ff0000"
-                ],
-            },
-            layout: {
-                'text-field':
-                ["coalesce", ["get", "地目"]],
-            }
-        });
+            map.addLayer({
+                id: 'tsukuba-target-circle',
+                source: 'tsukuba-target',
+                type: 'circle',
+                paint:{
+                    'circle-color': 
+                    [
+                        "match",
+                        ["feature-state", "color"],
+                        ["#faf000"],
+                        "#faf000",
+                        ["#0041ff"],
+                        "#0041ff",
+                        ["#ff99a0"],
+                        "#ff99a0",
+                        ["#00cc00"],
+                        "#00cc00",
+                        ["#ff8700"],
+                        "#ff8700",
+                        ["#66ccff"],
+                        "#66ccff",
+                        ["#808080"],
+                        "#808080",
+                        ["#a9a9a9"],
+                        "#a9a9a9",
+                        "#008000"
+                    ],
+                    'circle-radius': 12,
+                    'circle-stroke-color': "#aaaaaa",
+                    'circle-stroke-width': 8
+                }
+            });
 
+            map.addLayer({
+                id: 'tsukuba-target-symbol',
+                source: 'tsukuba-target',
+                type: 'symbol',
+                paint:{
+                    'text-color':
+                    [
+                        "match",
+                        ["feature-state", "color"],
+                        ["#ffffff"],
+                        "#ffffff",
+                        "#ff0000"
+                    ],
+                },
+                layout: {
+                    'text-field':
+                    ["coalesce", ["get", "地目"]],
+                }
+            });
+
+        }
+        
     }
+
+    //TODO: duplicated for addSource, addLayer, should be changed with functions.
+    map.on('styledata', function() {
+
+        if(map.getSource('tsukuba-fudesource') === undefined){
+
+            addingLayers();
             
-        };
+        }
+
     });
 
     //TODO: duplicated for addSource, addLayer, should be changed with functions.
@@ -588,180 +686,9 @@ type="text/css"
 
         if(map.getSource('tsukuba-fudesource') === undefined){
 
-        
-        map.addSource('tsukuba-fudesource',{
-            type: 'geojson',
-            generateId: true,
-            data: 'https://gist.githubusercontent.com/tichimura/cd1ecec268d88d29e81887ef31afd788/raw/830d938f5e6aa6e2f2c1931e4149d70e4b2de6bc/tsukuba_fude_polygon.geojson'
-        })
+            addingLayers();
 
-        map.addSource('tsukuba-target',  {
-            type: 'geojson',
-            promoteId: 'targetId',
-            data: {
-                "features": [                    
-                { "type": "Feature", "properties": {                         
-                        "受け人氏名": "田中　太郎",
-                        "受け人住所": "東京都新宿区新宿1丁目1-1",
-                        "受け人職業": "農業",
-                        "申請代理人": "鈴木 花子",
-                        "申請代理人住所": "東京都新宿区新宿1丁目2-2",
-                        "取得形態": "",
-                        "取得資金": "",
-                        "売買賃借料": "",
-                        "物納": "",
-                        "単位": "",
-                        "利用者報告対象": "",
-                        "納税猶予": "",
-                        "発生日": "2020/1/31",
-                        "適用日": "2020/2/1",
-                        "農年処分": "",
-                        "適用日": "",
-                        "受理年月日": "2019/12/15",
-                        "開始年月日": "2020/2/1",
-                        "終了年月日": "",
-                        "備考": "",
-                        "所在・地番": "茨城県つくば市面野井字面野井1500", "面積": 1729.0, "地目": "田", "緯度": 36.07774588, "経度": 140.0696847, "耕作者": "204eea145e6c5970d4fb7f85d4d0e3c9", "農振法区分": "調査中", "都市計画法": "市街化調整区域", "所有者の農": "非公表", "権利の種類": "賃借権等の設定がない", "存続期間始": null, "存続期間終": null, "農地中間管": "農地中間管理権が設定されていない", "遊休農地か": "遊休農地ではない", "利用状況調": null, "所有者等の": "調査中", "所有者等を": null, "遊休農地の": "調査対象外", "利用意向調": null, "農地中間_1": null, "農地中間_2": null, "措置命令日": null, "所有者等_1": null, "筆ポリ中心": "POINT (140.069713599975 36.077739495793665)" }, "bbox": [ 140.069714, 36.077739, 140.069714, 36.077739 ], "geometry": { "type": "Point", "coordinates": [ 140.069714, 36.077739 ] } },
-                { "type": "Feature", "properties": {                         
-                        "受け人氏名": "田中　太郎",
-                        "受け人住所": "東京都新宿区新宿1丁目1-1",
-                        "受け人職業": "農業",
-                        "申請代理人": "鈴木 花子",
-                        "申請代理人住所": "東京都新宿区新宿1丁目2-2",
-                        "取得形態": "",
-                        "取得資金": "",
-                        "売買賃借料": "",
-                        "物納": "",
-                        "単位": "",
-                        "利用者報告対象": "",
-                        "納税猶予": "",
-                        "発生日": "2020/1/31",
-                        "適用日": "2020/2/1",
-                        "農年処分": "",
-                        "適用日": "",
-                        "受理年月日": "2019/12/15",
-                        "開始年月日": "2020/2/1",
-                        "終了年月日": "",
-                        "備考": "",
-                        "所在・地番": "茨城県つくば市面野井字面野井1501", "面積": 1260.0, "地目": "田", "緯度": 36.07774278, "経度": 140.0698561, "耕作者": "204eea145e6c5970d4fb7f85d4d0e3c9", "農振法区分": "調査中", "都市計画法": "市街化調整区域", "所有者の農": "非公表", "権利の種類": "賃借権等の設定がない", "存続期間始": null, "存続期間終": null, "農地中間管": "農地中間管理権が設定されていない", "遊休農地か": "遊休農地（不耕作）", "利用状況調": null, "所有者等の": "調査中", "所有者等を": null, "遊休農地の": "調査対象外", "利用意向調": null, "農地中間_1": null, "農地中間_2": null, "措置命令日": null, "所有者等_1": null, "筆ポリ中心": "POINT (140.069889758085 36.077734262903718)" }, "bbox": [ 140.06989, 36.077734, 140.06989, 36.077734 ], "geometry": { "type": "Point", "coordinates": [ 140.06989, 36.077734 ] } },
-                { "type": "Feature", "properties": {                         
-                        "受け人氏名": "田中　太郎",
-                        "受け人住所": "東京都新宿区新宿1丁目1-1",
-                        "受け人職業": "農業",
-                        "申請代理人": "鈴木 花子",
-                        "申請代理人住所": "東京都新宿区新宿1丁目2-2",
-                        "取得形態": "",
-                        "取得資金": "",
-                        "売買賃借料": "",
-                        "物納": "",
-                        "単位": "",
-                        "利用者報告対象": "",
-                        "納税猶予": "",
-                        "発生日": "2020/1/31",
-                        "適用日": "2020/2/1",
-                        "農年処分": "",
-                        "適用日": "",
-                        "受理年月日": "2019/12/15",
-                        "開始年月日": "2020/2/1",
-                        "終了年月日": "",
-                        "備考": "",
-                        "所在・地番": "茨城県つくば市面野井字面野井1502", "面積": 1056.0, "地目": "田", "緯度": 36.07736756, "経度": 140.0699978, "耕作者": "204eea145e6c5970d4fb7f85d4d0e3c9", "農振法区分": "調査中", "都市計画法": "市街化調整区域", "所有者の農": "非公表", "権利の種類": "その他の権利", "存続期間始": null, "存続期間終": null, "農地中間管": "農地中間管理権が設定されていない", "遊休農地か": "遊休農地ではない", "利用状況調": null, "所有者等の": "調査中", "所有者等を": null, "遊休農地の": "調査対象外", "利用意向調": null, "農地中間_1": null, "農地中間_2": null, "措置命令日": null, "所有者等_1": null, "筆ポリ中心": "POINT (140.07003360739222 36.07736361151904)" }, "bbox": [ 140.070034, 36.077364, 140.070034, 36.077364 ], "geometry": { "type": "Point", "coordinates": [ 140.070034, 36.077364 ] } }
-                ],
-                "type": "FeatureCollection"
-            }
-        });  
-        
-    var hoveredStateId = null;
-
-    addLayers();
-
-    function addLayers(){
-
-        map.addLayer({
-            'id': 'tsukuba-target-fudepolygon',
-            'type': 'fill',
-            'source': 'tsukuba-fudesource',
-            'layout': {},
-            'paint': {
-                'fill-color': 
-                [
-                "match",
-                ["feature-state", "color"],
-                ["#faf000"],
-                "#faf000",
-                ["#0041ff"],
-                "#0041ff",
-                ["#ff99a0"],
-                "#ff99a0",
-                ["#00cc00"],
-                "#00cc00",
-                ["#ff8700"],
-                "#ff8700",
-                ["#66ccff"],
-                "#66ccff",
-                ["#808080"],
-                "#808080",
-                "hsla(0, 0%, 0%, 0)"
-                ],
-                'fill-opacity': 0.5
-            }
-        },'tsukuba-fudepoints');  
-
-        map.addLayer({
-            id: 'tsukuba-target-circle',
-            source: 'tsukuba-target',
-            type: 'circle',
-            paint:{
-                'circle-color': 
-                [
-                    "match",
-                    ["feature-state", "color"],
-                    ["#faf000"],
-                    "#faf000",
-                    ["#0041ff"],
-                    "#0041ff",
-                    ["#ff99a0"],
-                    "#ff99a0",
-                    ["#00cc00"],
-                    "#00cc00",
-                    ["#ff8700"],
-                    "#ff8700",
-                    ["#66ccff"],
-                    "#66ccff",
-                    ["#808080"],
-                    "#808080",
-                    "#008000"
-                ],
-                'circle-radius': 12,
-                'circle-stroke-color': "#aaaaaa",
-                'circle-stroke-width': 8
-            }
-        });
-
-        map.addLayer({
-            id: 'tsukuba-target-symbol',
-            source: 'tsukuba-target',
-            type: 'symbol',
-            paint:{
-                'text-color': 
-                [
-                    "match",
-                    ["feature-state", "color"],
-                    ["#ffffff"],
-                    "#ffffff",
-                    "#ff0000"
-                ],
-            },
-            layout: {
-                'text-field':
-                ["coalesce", ["get", "地目"]],
-            }
-        });
-
-    }
-
-    // close if state for addsource.
-    }
+        }
 
         // Create a popup, but don't add it to the map yet.
         var popup = new mapboxgl.Popup({
@@ -896,20 +823,7 @@ type="text/css"
 
             elem.className = classes.join(' ');
 
-        }
-
-        // map.on('click', 'tsukuba-fudepolygon-fill', function(e) {
-            
-        //     map.getCanvas().style.cursor = 'pointer';
-        //     var fudeid = e.features[0].properties.筆ポリゴン;
-        //     var fudetype = e.features[0].properties.耕地の種類;
-
-        //     popup
-        //         .setLngLat(e.lngLat)
-        //         .setHTML('<p>筆ポリゴン: '+fudeid+'</p><p>耕地の種類: '+fudetype+'</p>')
-        //         .addTo(map);
-        // });
-        
+        }        
 
         map.on('click', 'tsukuba-target-circle', function(e) {
 
@@ -945,7 +859,7 @@ type="text/css"
                 "面積",
                 "存続期間終",
                 "所在・地番",
-                "筆ポリゴン",
+                "筆ポリ中心",
                 "存続期間始",
                 "利用状況調",
                 "農地中間_1",
@@ -976,6 +890,9 @@ type="text/css"
                 displayFeat += memoAdd + imageAdd + detailAdd;
                 
                 displayDetailsProperties.forEach(function(prop) {
+                    if(feat[prop] === 'null'){
+                        feat[prop] = "";
+                    }
                     displayFeat += '<input type="checkbox" id="'+prop+'" name="demo" value="demo"><label for="'+prop+'>"<p>'+prop+': <b>'+feat[prop]+'</b></p></label>';
                 });
                 displayFeat += '</div>' 
@@ -985,24 +902,7 @@ type="text/css"
 
             toggleSidebar('right', fid, displayFeatures, 'three');
 
-        });
-        
-
-        map.on('click', 'tsukuba-target-fudepolygon', function(e) {
-            if (e.features.length > 0) {
-            if (hoveredStateId) {
-                map.setFeatureState(
-                { source: 'tsukuba-fudesource', id: hoveredStateId },
-                { hover: false }
-                );
-            }            
-            hoveredStateId = e.features[0].id;
-            map.setFeatureState(
-                { source: 'tsukuba-fudesource', id: hoveredStateId },
-                { hover: true }
-                );
-            }
-        });        
+        });  
 
         map.on('click', 'tsukuba-fudepoints', function(e) {
 
@@ -1050,7 +950,6 @@ type="text/css"
                 e.point,
                 { layers: ['tsukuba-target-fudepolygon'] }
             );
-
 
             var fid = features[0].id;
 
