@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>Display a popup on hover</title>
+<title>MAFF Digital Map Demo</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css" rel="stylesheet" />
@@ -312,8 +312,17 @@ type="text/css"
     var streetstyle = 'mapbox://styles/tichimura/ckbw12q2t0ofj1ipot3uxhshn';
     var satellitestyle = 'mapbox://styles/tichimura/ckdcbaolp2yv71imlerq5njx5';
 
+
+	mapboxgl.accessToken = 'pk.eyJ1IjoidGljaGltdXJhIiwiYSI6ImNrcXI4bWJ6MDB4OXYyc25iNTJubjR5azUifQ.kRqYXyTdYgEcuTfz-7oqrQ';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: satellitestyle + '/draft',
+        center: [139.48459, 35.447822],
+        zoom: 16
+    });    
+    
     var directions = new MapboxDirections({
-        accessToken: 'pk.eyJ1IjoidGljaGltdXJhIiwiYSI6ImNrMnBpN3NxMzA0bGMzbnBpdmhqd2EyazQifQ.5ozS730sMWdKGe5gx32BJA',
+        accessToken: mapboxgl.accessToken,
         unit: 'metric',
         profile: 'mapbox/walking',
         language: "ja",
@@ -331,13 +340,6 @@ type="text/css"
     });
 
 
-	mapboxgl.accessToken = 'pk.eyJ1IjoidGljaGltdXJhIiwiYSI6ImNrMnBpN3NxMzA0bGMzbnBpdmhqd2EyazQifQ.5ozS730sMWdKGe5gx32BJA';
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: satellitestyle + '/draft',
-        center: [139.48459, 35.447822],
-        zoom: 16
-    });    
 
 
     // 市街地

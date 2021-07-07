@@ -2,10 +2,11 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>MAFF Digital Map Demo</title>
+<title>Digital Map Demo</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-<script src="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js"></script>
-<link href="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css" rel="stylesheet" />
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+
 <style>
 	body { margin: 0; padding: 0; }
     #map { position: absolute; top: 0; bottom: 0; width: 100%}
@@ -153,72 +154,72 @@
     } */
 
     #fieldtype option:first-child:before {
-    background:hsla(120, 100%, 25%, 0);
-    border-width: 3px;
-    border: darkmagenta;
+        background:hsla(120, 100%, 25%, 0);
+        border-width: 3px;
+        border: darkmagenta;
 	}
     #fieldtype option:nth-child(2):before{
-    background:#faf000;
+        background:#faf000;
     }
     #fieldtype option:nth-child(3):before{
-    background:#0041ff;
+        background:#0041ff;
     }
     #fieldtype option:nth-child(4):before{
-    background:#ff99a0;
+        background:#ff99a0;
     }
     #fieldtype option:nth-child(5):before{
-    background:#00cc00;
+        background:#00cc00;
     }
     #fieldtype option:nth-child(6):before{
-    background:#ff8700;
+        background:#ff8700;
     }
     #fieldtype option:nth-child(7):before{
-    background:#66ccff;
+        background:#66ccff;
     }
 
     #close-button {
-    display: block;
-    position: relative;
-    line-height: 36px;
-    cursor: pointer;
-    user-select: none;
-    width: 50px;
-    height: 40px;
-    border: #0041ff;
-    border-radius: 10px;
-    font-size: 12px;
-    text-align: center;
-    background: #fff;
+        display: block;
+        position: relative;
+        line-height: 36px;
+        cursor: pointer;
+        user-select: none;
+        width: 50px;
+        height: 40px;
+        border: #0041ff;
+        border-radius: 10px;
+        font-size: 12px;
+        text-align: center;
+        background: #fff;
     }
 
     #navigation {
-    display: block;
-    position: absolute;
-    left: 10px;
-    bottom: 40px;
-    width: 50px;
-    height: 40px;
-    padding: 10px;
-    border: none;
-    border-radius: 3px;
-    font-size: 12px;
-    text-align: center;
-    background: #fff;
+        display: block;
+        position: absolute;
+        left: 10px;
+        bottom: 40px;
+        width: 50px;
+        height: 40px;
+        padding: 10px;
+        border: none;
+        border-radius: 3px;
+        font-size: 12px;
+        text-align: center;
+        background: #fff;
     }
 
     #drawing {
-    display: block;
-    position: absolute;
-    left: 10px;
-    bottom: 85px;
-    width: 50px;
-    height: 40px;
-    padding: 10px;
-    border: #0041ff;
-    border-radius: 3px;
-    font-size: 12px;
-    text-align: center;
-    background: #fff;
+        display: block;
+        position: absolute;
+        left: 10px;
+        bottom: 85px;
+        width: 50px;
+        height: 40px;
+        padding: 10px;
+        border: #0041ff;
+        border-radius: 3px;
+        font-size: 12px;
+        text-align: center;
+        background: #fff;
     }
 
     /* #camera {
@@ -226,49 +227,42 @@
     }  */
 
     #label-camera {
-    display: block;
-    position: absolute;        
-    font-size: 16px; /* ラベルテキストのサイズを指定する */
-    color: black;
-    padding: 6px; /* ラベルとテキスト間の余白を指定する */
-    border-radius: 10px; /* ラベルボックスの角丸を指定する */
-    background-color:#efefef;
+        display: block;
+        position: absolute;        
+        font-size: 16px; /* ラベルテキストのサイズを指定する */
+        color: black;
+        padding: 6px; /* ラベルとテキスト間の余白を指定する */
+        border-radius: 10px; /* ラベルボックスの角丸を指定する */
+        background-color:#efefef;
     }
 
     #frame {
-    display: block;
-    position: relative;
-    width: 300px;
-    height: 300px;
+        display: block;
+        position: relative;
+        width: 300px;
+        height: 300px;
     }
     
     #memoarea{
-    width: 300px;
-    height: 150px;        
+        width: 300px;
+        height: 150px;        
     }
 
     #menu {
-    position: absolute;
-    background: #fff;
-    padding: 10px;
-    font-family: 'Open Sans', sans-serif;
+        position: absolute;
+        background: #fff;
+        padding: 10px;
+        font-family: 'Open Sans', sans-serif;
     }
 
 
 </style>
-<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.js"></script>
-<link
-rel="stylesheet"
-href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.css"
-type="text/css"
-/>
-<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.0/mapbox-gl-draw.js"></script>
-<link
-rel="stylesheet"
-href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.0/mapbox-gl-draw.css"
-type="text/css"
-/>
-<script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css" type="text/css">
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.3.0/mapbox-gl-draw.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.3.0/mapbox-gl-draw.css' type='text/css' />
+
+<script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
 
 <div id="map">
     <div id="right" class="sidebar flex-center right collapsed">
@@ -283,17 +277,11 @@ type="text/css"
     </div> 
 </div>
 <div id="menu">
-    <input
-    id="satellite-sample"
-    type="radio"
-    name="rtoggle"
-    value="streets"
-    checked="checked"
-    />
+    <input id="satellite-sample" type="radio" name="rtoggle" value="satellite" checked="checked" />
     <label for="satellite-sample">衛星写真</label>
-    <input id="streets-sample" type="radio" name="rtoggle" value="satellite" />
+    <input id="streets-sample" type="radio" name="rtoggle" value="streets" />
     <label for="streets-sample">地図</label>
-    </div>
+</div>
 <div class="calculation-box" id="calculation-box" style="display: none;">
     <p>1. 種類を選択 > 2. 範囲を指定 <br> > 3.ダブルクリック</p>
     <div id="calculated-area"></div>
@@ -310,10 +298,17 @@ type="text/css"
 <script>
 
     var streetstyle = 'mapbox://styles/tichimura/ckbw12q2t0ofj1ipot3uxhshn';
-    var satellitestyle = 'mapbox://styles/tichimura/ckdcbaolp2yv71imlerq5njx5';
+
+	mapboxgl.accessToken = 'pk.eyJ1IjoidGljaGltdXJhIiwiYSI6ImNrcXI4bWJ6MDB4OXYyc25iNTJubjR5azUifQ.kRqYXyTdYgEcuTfz-7oqrQ';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: streetstyle,
+        center: [140.0696847,36.07774588],
+        zoom: 17.2
+    });
 
     var directions = new MapboxDirections({
-        accessToken: 'pk.eyJ1IjoidGljaGltdXJhIiwiYSI6ImNrMnBpN3NxMzA0bGMzbnBpdmhqd2EyazQifQ.5ozS730sMWdKGe5gx32BJA',
+        accessToken: mapboxgl.accessToken,
         unit: 'metric',
         profile: 'mapbox/walking',
         language: "ja",
@@ -330,50 +325,68 @@ type="text/css"
         }
     });
 
-
-	mapboxgl.accessToken = 'pk.eyJ1IjoidGljaGltdXJhIiwiYSI6ImNrMnBpN3NxMzA0bGMzbnBpdmhqd2EyazQifQ.5ozS730sMWdKGe5gx32BJA';
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: satellitestyle + '/draft',
-        center: [139.7871434, 35.9654685],
-        zoom: 17
-    });
-
-
-    // 市街地
-    // mapbox://styles/tichimura/ckbw12q2t0ofj1ipot3uxhshn
-    // 衛星写真
-    // mapbox://styles/tichimura/ckdcbaolp2yv71imlerq5njx5
+    var visibleLayers = [
+        'building-number-label',
+        'building-extruded',
+        'road-motorway-trunk',
+        'building-number-label',
+        'building-extruded',
+        'road-motorway-trunk',
+        'road-primary',
+        'road-secondary-tertiary',
+        'road-secondary-tertiary-case',
+        'road-street',
+        'road-minor',
+        'road-major-link',
+        'road-construction',
+        'road-motorway-trunk-case',
+        'road-major-link-case',
+        'road-primary-case',
+        'road-street-case',
+        'road-street-low',
+        'road-minor-case',
+        'road-minor-low',
+        'road-detail-shape',
+        'road-rail',
+        'road-rail-tracks',
+        'road-detail-shape-polygon',
+        'tunnel-motorway-trunk',
+        'tunnel-primary-secondary-tertiary',
+        'tunnel-street-minor',
+        'tunnel-major-link',
+        'building',
+        'building-outline',
+        'water',
+        'waterway',
+        'water-shadow',
+        'waterway-shadow'  
+    ];
 
     var layerList = document.getElementById('menu');
-    var inputs = layerList.getElementsByTagName('input');
-    
+    layerList.addEventListener('change', function(e){
+        if(e.target.id === 'streets-sample' && (map.getLayoutProperty('mapbox-satellite', 'visibility') === 'visible' || map.getLayoutProperty('mapbox-satellite', 'visibility') === undefined)){
 
-    // スタイルが増えたらここを編集する
-    function switchLayer(layer) {
-        var layerId = layer.target.id;
-        if(layerId === 'streets-sample'){
-            map.setStyle(streetstyle +'/draft');
-        }else if(layerId === 'satellite-sample'){
-            map.setStyle(satellitestyle +'/draft');
+            map.setLayoutProperty('mapbox-satellite','visibility','none');
+
+            for(i=0;i<visibleLayers.length;i++){
+                map.setLayoutProperty(visibleLayers[i],'visibility','visible');
+            }
+
+        }else{
+            map.setLayoutProperty('mapbox-satellite','visibility','visible')
+
+            for(i=0;i<visibleLayers.length;i++){
+                map.setLayoutProperty(visibleLayers[i],'visibility','none');
+            }
+
         }
-    }
-    
-    for (var i = 0; i < inputs.length; i++) {
-        inputs[i].onclick = switchLayer;
-    }
 
+    });
 
     var scale = new mapboxgl.ScaleControl({
         maxWidth: 80,
         unit: 'imperial'
     });
-
-    // create a HTML element for each feature
-    var el = document.createElement('div');
-    el.className = 'marker';
-
-    // map.addControl(new mapboxgl.FullscreenControl());
     
     map.addControl(new mapboxgl.NavigationControl());
 
@@ -384,204 +397,229 @@ type="text/css"
         trackUserLocation: true
     }));
 
-    function addingLayers(){
+    map.on('load', function() {
 
-        map.addSource('kasukabe-fudesource',{
-            type: 'geojson',
-            generateId: true,
-            data: 'https://gist.githubusercontent.com/tichimura/658de80cdbcaff858d8a4317c2a1e5ce/raw/172ccf7a0f1ee124e23d34e71a34767b636b5351/kasukabe_fude_polygon.geojson'
-        })
+        map.addSource('tsukuba-fudesource',{
+                type: 'geojson',
+                generateId: true,
+                data: 'https://gist.githubusercontent.com/tichimura/ca9df3145633ba178a41e68b9a727055/raw/8f34284932a7cad012deb7c8c60a9996a7246b30/tsukuba_fude_polygon.geojson'
+            })
 
-        map.addSource('kasukabe-target',  {
-            type: 'geojson',
-            promoteId: 'targetId',
-            data: {
-                "features": [                    
-                { 
-                    "type": "Feature", 
-                    "properties": {                         
-                        "受け人氏名": "田中　太郎",
-                        "受け人住所": "東京都新宿区新宿1丁目1-1",
-                        "受け人職業": "農業",
-                        "申請代理人": "鈴木 花子",
-                        "申請代理人住所": "東京都新宿区新宿1丁目2-2",
-                        "取得形態": "",
-                        "取得資金": "",
-                        "売買賃借料": "",
-                        "物納": "",
-                        "単位": "",
-                        "利用者報告対象": "",
-                        "納税猶予": "",
-                        "発生日": "2020/1/31",
-                        "適用日": "2020/2/1",
-                        "農年処分": "",
-                        "適用日": "",
-                        "受理年月日": "2019/12/15",
-                        "開始年月日": "2020/2/1",
-                        "終了年月日": "",
-                        "備考": "",
-                        "所在・地番": "埼玉県春日部市銚子口字沼回107", 
-                        "面積": 214.0, 
-                        "地目": "畑", 
-                        "緯度": 35.9654685, 
-                        "経度": 139.7871434, 
-                        "耕作者": "7b6ac1817292311d0610e9915ef2a48b", 
-                        "農振法区分": "調査中", 
-                        "都市計画法": "市街化調整区域", 
-                        "所有者の農": "非公表", 
-                        "権利の種類": "賃借権等の設定がない", 
-                        "存続期間始": null, 
-                        "存続期間終": null, 
-                        "農地中間管": "農地中間管理権が設定されていない", 
-                        "遊休農地か": "遊休農地（低利用）", 
-                        "利用状況調": 20150801, 
-                        "所有者等の": "調査中", 
-                        "所有者等を": null, 
-                        "遊休農地の": "調査対象外", 
-                        "利用意向調": null, 
-                        "農地中間_1": null, 
-                        "農地中間_2": null, 
-                        "措置命令日": null, 
-                        "所有者等_1": null, 
-                        "筆ポリゴン": "POLYGON ((139.78701310570764 35.965514586726705, 139.78710408248952 35.965398945629005, 139.7871356909225 35.965419843778022, 139.78725423646296 35.965474514217078, 139.78720677842128 35.965521087778974, 139.78716524545783 35.965574090055583, 139.7870743",
-                        targetId: 1 
-                    }, 
-                    "bbox": [ 139.787131, 35.965491, 139.787131, 35.965491 ], 
-                    "geometry": { 
+        map.addSource('tsukuba-target',  {
+                type: 'geojson',
+                promoteId: 'targetId',
+                data: {
+                    "features": [                    
+                    { 
+                        "type": "Feature", 
+                        "properties": {                         
+                            "受け人氏名": "田中　太郎",
+                            "受け人住所": "東京都新宿区新宿1丁目1-1",
+                            "受け人職業": "農業",
+                            "申請代理人": "鈴木 花子",
+                            "申請代理人住所": "東京都新宿区新宿1丁目2-2",
+                            "取得形態": "",
+                            "取得資金": "",
+                            "売買賃借料": "",
+                            "物納": "",
+                            "単位": "",
+                            "利用者報告対象": "",
+                            "納税猶予": "",
+                            "発生日": "2020/1/31",
+                            "適用日": "2020/2/1",
+                            "農年処分": "",
+                            "適用日": "",
+                            "受理年月日": "2019/12/15",
+                            "開始年月日": "2020/2/1",
+                            "終了年月日": "",
+                            "備考": "",
+                            "所在・地番": "茨城県つくば市面野井字面野井1500", 
+                            "面積": 1729.0, 
+                            "地目": "田", 
+                            "緯度": 36.07774588, 
+                            "経度": 140.0696847, 
+                            "耕作者": "204eea145e6c5970d4fb7f85d4d0e3c9", 
+                            "農振法区分": "調査中", 
+                            "都市計画法": "市街化調整区域", 
+                            "所有者の農": "非公表", 
+                            "権利の種類": "賃借権等の設定がない", 
+                            "存続期間始": null, 
+                            "存続期間終": null, 
+                            "農地中間管": "農地中間管理権が設定されていない", 
+                            "遊休農地か": "遊休農地ではない", 
+                            "利用状況調": null, 
+                            "所有者等の": "調査中", 
+                            "所有者等を": null, 
+                            "遊休農地の": "調査対象外", 
+                            "利用意向調": null, 
+                            "農地中間_1": null, 
+                            "農地中間_2": null, 
+                            "措置命令日": null, 
+                            "所有者等_1": null, 
+                            "筆ポリ中心": "POINT (140.069713599975 36.077739495793665)",
+                            targetId: 1 
+                        }, 
+                        "bbox": [ 140.069714, 36.077739, 140.069714, 36.077739 ], 
+                        "geometry": { 
                             "type": "Point", 
-                            "coordinates": [ 139.787131, 35.965491 ] 
-                    } 
-                },
-                { 
-                    "type": "Feature", 
-                    "properties": {                         
-                        "受け人氏名": "田中　太郎",
-                        "受け人住所": "東京都新宿区新宿1丁目1-1",
-                        "受け人職業": "農業",
-                        "申請代理人": "鈴木 花子",
-                        "申請代理人住所": "東京都新宿区新宿1丁目2-2",
-                        "取得形態": "",
-                        "取得資金": "",
-                        "売買賃借料": "",
-                        "物納": "",
-                        "単位": "",
-                        "利用者報告対象": "",
-                        "納税猶予": "",
-                        "発生日": "2020/1/31",
-                        "適用日": "2020/2/1",
-                        "農年処分": "",
-                        "適用日": "",
-                        "受理年月日": "2019/12/15",
-                        "開始年月日": "2020/2/1",
-                        "終了年月日": "",
-                        "備考": "",
-                        "所在・地番": "埼玉県春日部市銚子口字沼回117-1", 
-                        "面積": 477.0, 
-                        "地目": "畑", 
-                        "緯度": 35.96531187, 
-                        "経度": 139.7872946, 
-                        "耕作者": "7b6ac1817292311d0610e9915ef2a48b", 
-                        "農振法区分": "調査中", 
-                        "都市計画法": "市街化調整区域", 
-                        "所有者の農": "非公表", 
-                        "権利の種類": "賃借権等の設定がない", 
-                        "存続期間始": null, 
-                        "存続期間終": null, 
-                        "農地中間管": "農地中間管理権が設定されていない", 
-                        "遊休農地か": "遊休農地ではない", 
-                        "利用状況調": 20150801, 
-                        "所有者等の": "調査中", 
-                        "所有者等を": null, 
-                        "遊休農地の": "調査対象外", 
-                        "利用意向調": null, 
-                        "農地中間_1": null, 
-                        "農地中間_2": null, 
-                        "措置命令日": null, 
-                        "所有者等_1": null, 
-                        "筆ポリゴン": "POLYGON ((139.78728586921864 35.965453640382336, 139.787119904023 35.965379672359461, 139.78732163722151 35.965117871850815, 139.78735129819455 35.965088964173056, 139.78752121277734 35.965167753228123, 139.78740846796848 35.965334797954746, 139.78738870",
-                        targetId: 2 
-                    }, 
-                    "bbox": [ 139.787323, 35.965271, 139.787323, 35.965271 ], 
-                    "geometry": { 
-                        "type": "Point", 
-                        "coordinates": [ 139.787323, 35.965271 ] 
-                    } 
-                },
-                { 
-                    "type": "Feature", 
-                    "properties": {                         
-                        "受け人氏名": "田中　太郎",
-                        "受け人住所": "東京都新宿区新宿1丁目1-1",
-                        "受け人職業": "農業",
-                        "申請代理人": "鈴木 花子",
-                        "申請代理人住所": "東京都新宿区新宿1丁目2-2",
-                        "取得形態": "",
-                        "取得資金": "",
-                        "売買賃借料": "",
-                        "物納": "",
-                        "単位": "",
-                        "利用者報告対象": "",
-                        "納税猶予": "",
-                        "発生日": "2020/1/31",
-                        "適用日": "2020/2/1",
-                        "農年処分": "",
-                        "適用日": "",
-                        "受理年月日": "2019/12/15",
-                        "開始年月日": "2020/2/1",
-                        "終了年月日": "",
-                        "備考": "",
-                        "所在・地番": "埼玉県春日部市銚子口字沼回122", 
-                        "面積": 340.0, 
-                        "地目": "畑", 
-                        "緯度": 35.96517521, 
-                        "経度": 139.787098, 
-                        "耕作者": "7b6ac1817292311d0610e9915ef2a48b", 
-                        "農振法区分": "調査中", 
-                        "都市計画法": "市街化調整区域", 
-                        "所有者の農": "非公表", 
-                        "権利の種類": "賃借権等の設定がない", 
-                        "存続期間始": null, 
-                        "存続期間終": null, 
-                        "農地中間管": "農地中間管理権が設定されていない", 
-                        "遊休農地か": "遊休農地ではない", 
-                        "利用状況調": 20150801, 
-                        "所有者等の": "調査中", 
-                        "所有者等を": null, 
-                        "遊休農地の": "調査対象外", 
-                        "利用意向調": null, 
-                        "農地中間_1": null, 
-                        "農地中間_2": null, 
-                        "措置命令日": null, 
-                        "所有者等_1": null, 
-                        "筆ポリゴン": "POLYGON ((139.78698766241345 35.965119498927521, 139.78704040136188 35.965054183659888, 139.78722871935258 35.965174067667917, 139.78709817797898 35.965357171400356, 139.78699739018884 35.965352312686385, 139.78710223544215 35.965177232235483, 139.786987",
-                        targetId: 3
-                    }, 
-                    "bbox": [ 139.787102, 35.96521, 139.787102, 35.96521 ], 
-                    "geometry": { 
-                        "type": "Point", 
-                        "coordinates": [ 139.787102, 35.96521 ] 
-                    } 
-                },
-            ],
-            "type": "FeatureCollection"
-            }            
-        });        
-        
-        addLayers();
+                            "coordinates": [ 140.069714, 36.077739 ] 
+                        },
+                    },
+                    { 
+                        "type": "Feature", "properties": {                         
+                            "受け人氏名": "田中　太郎",
+                            "受け人住所": "東京都新宿区新宿1丁目1-1",
+                            "受け人職業": "農業",
+                            "申請代理人": "鈴木 花子",
+                            "申請代理人住所": "東京都新宿区新宿1丁目2-2",
+                            "取得形態": "",
+                            "取得資金": "",
+                            "売買賃借料": "",
+                            "物納": "",
+                            "単位": "",
+                            "利用者報告対象": "",
+                            "納税猶予": "",
+                            "発生日": "2020/1/31",
+                            "適用日": "2020/2/1",
+                            "農年処分": "",
+                            "適用日": "",
+                            "受理年月日": "2019/12/15",
+                            "開始年月日": "2020/2/1",
+                            "終了年月日": "",
+                            "備考": "",
+                            "所在・地番": "茨城県つくば市面野井字面野井1501", 
+                            "面積": 1260.0, 
+                            "地目": "田", 
+                            "緯度": 36.07774278, 
+                            "経度": 140.0698561, 
+                            "耕作者": "204eea145e6c5970d4fb7f85d4d0e3c9", 
+                            "農振法区分": "調査中", 
+                            "都市計画法": "市街化調整区域", 
+                            "所有者の農": "非公表", 
+                            "権利の種類": "賃借権等の設定がない", 
+                            "存続期間始": null, 
+                            "存続期間終": null, 
+                            "農地中間管": "農地中間管理権が設定されていない", 
+                            "遊休農地か": "遊休農地（不耕作）", 
+                            "利用状況調": null, 
+                            "所有者等の": "調査中", 
+                            "所有者等を": null, 
+                            "遊休農地の": "調査対象外", 
+                            "利用意向調": null, 
+                            "農地中間_1": null, 
+                            "農地中間_2": null, 
+                            "措置命令日": null, 
+                            "所有者等_1": null, 
+                            "筆ポリ中心": "POINT (140.069889758085 36.077734262903718)",
+                            targetId: 2
+                        }, 
+                        "bbox": [ 140.06989, 36.077734, 140.06989, 36.077734 ], 
+                        "geometry": { 
+                            "type": "Point", 
+                            "coordinates": [ 140.06989, 36.077734 ] 
+                        } 
+                    },
+                    {
+                        "type": "Feature", 
+                        "properties": {                         
+                            "受け人氏名": "田中　太郎",
+                            "受け人住所": "東京都新宿区新宿1丁目1-1",
+                            "受け人職業": "農業",
+                            "申請代理人": "鈴木 花子",
+                            "申請代理人住所": "東京都新宿区新宿1丁目2-2",
+                            "取得形態": "",
+                            "取得資金": "",
+                            "売買賃借料": "",
+                            "物納": "",
+                            "単位": "",
+                            "利用者報告対象": "",
+                            "納税猶予": "",
+                            "発生日": "2020/1/31",
+                            "適用日": "2020/2/1",
+                            "農年処分": "",
+                            "適用日": "",
+                            "受理年月日": "2019/12/15",
+                            "開始年月日": "2020/2/1",
+                            "終了年月日": "",
+                            "備考": "",
+                            "所在・地番": "茨城県つくば市面野井字面野井1502", 
+                            "面積": 1056.0, 
+                            "地目": "田", 
+                            "緯度": 36.07736756, 
+                            "経度": 140.0699978, 
+                            "耕作者": "204eea145e6c5970d4fb7f85d4d0e3c9", 
+                            "農振法区分": "調査中", 
+                            "都市計画法": "市街化調整区域", 
+                            "所有者の農": "非公表", 
+                            "権利の種類": "その他の権利", 
+                            "存続期間始": null, 
+                            "存続期間終": null, 
+                            "農地中間管": "農地中間管理権が設定されていない", 
+                            "遊休農地か": "遊休農地ではない", 
+                            "利用状況調": null, 
+                            "所有者等の": "調査中", 
+                            "所有者等を": null, 
+                            "遊休農地の": "調査対象外", 
+                            "利用意向調": null, 
+                            "農地中間_1": null, 
+                            "農地中間_2": null, 
+                            "措置命令日": null, 
+                            "所有者等_1": null, 
+                            "筆ポリ中心": "POINT (140.07003360739222 36.07736361151904)",
+                            targetId: 3
+                        }, 
+                        "bbox": [ 140.070034, 36.077364, 140.070034, 36.077364 ], 
+                        "geometry": { 
+                            "type": "Point", 
+                            "coordinates": [ 140.070034, 36.077364 ] 
+                            } 
+                    }
+                ],
+                    "type": "FeatureCollection"
+                }            
+            });   
+            
+        map.addLayer({
+            'id': 'tsukuba-target-fudepolygon',
+            'type': 'fill',
+            'source': 'tsukuba-fudesource',
+            'layout': {},
+            'paint': {
+                'fill-color': 
+                [
+                "match",
+                ["feature-state", "color"],
+                ["#faf000"],
+                "#faf000",
+                ["#0041ff"],
+                "#0041ff",
+                ["#ff99a0"],
+                "#ff99a0",
+                ["#00cc00"],
+                "#00cc00",
+                ["#ff8700"],
+                "#ff8700",
+                ["#66ccff"],
+                "#66ccff",
+                ["#808080"],
+                "#808080",
+                ["#a9a9a9"],
+                "#a9a9a9",
+                "hsla(0, 0%, 0%, 0)"
+                ],
+                'fill-opacity': 0.5
+            }
+        },'tsukuba-fudepoints');  
 
-        function addLayers(){
-
-            map.addLayer({
-                'id': 'kasukabe-target-fudepolygon',
-                'type': 'fill',
-                'source': 'kasukabe-fudesource',
-                'layout': {},
-                'paint': {
-                    'fill-color': 
-                    [
+        map.addLayer({
+            id: 'tsukuba-target-circle',
+            source: 'tsukuba-target',
+            type: 'circle',
+            paint:{
+                'circle-color': 
+                [
                     "match",
-                    ["feature-state", 
-                            "color"],
+                    ["feature-state", "color"],
                     ["#faf000"],
                     "#faf000",
                     ["#0041ff"],
@@ -598,99 +636,33 @@ type="text/css"
                     "#808080",
                     ["#a9a9a9"],
                     "#a9a9a9",
-                    "hsla(0, 0%, 0%, 0)"
-                    ],
-                    'fill-opacity': 0.5
-                }
-            },'kasukabe-fudepoints');  
+                    "#008000"
+                ],
+                'circle-radius': 12,
+                'circle-stroke-color': "#aaaaaa",
+                'circle-stroke-width': 8
+            }
+        });
 
-            map.addLayer({
-                id: 'kasukabe-target-circle',
-                source: 'kasukabe-target',
-                type: 'circle',
-                paint:{
-                    'circle-color': 
-                    [
-                        "match",
-                        ["feature-state", 
-                            "color"],
-                        ["#faf000"],
-                        "#faf000",
-                        ["#0041ff"],
-                        "#0041ff",
-                        ["#ff99a0"],
-                        "#ff99a0",
-                        ["#00cc00"],
-                        "#00cc00",
-                        ["#ff8700"],
-                        "#ff8700",
-                        ["#66ccff"],
-                        "#66ccff",
-                        ["#808080"],
-                        "#808080",
-                        ["#a9a9a9"],
-                        "#a9a9a9",
-                        "#008000"
-                    ],
-                    'circle-radius': 12,
-                    'circle-stroke-color': "#aaaaaa",
-                    'circle-stroke-width': 8
-                }
-            });
-
-            map.addLayer({
-                id: 'kasukabe-target-symbol',
-                source: 'kasukabe-target',
-                type: 'symbol',
-                paint:{
-                    'text-color':
-                    [
-                        "match",
-                        ["feature-state", 
-                            "color"],
-                        ["#ffffff"],
-                        "#ffffff",
-                        "#ff0000"
-                    ],
-                },
-                layout: {
-                    'text-field':
-                    ["coalesce", ["get", 
-                            "地目"]],
-                }
-            });
-
-        }
-
-    }
-
-    map.on('styledata', function() {
-
-        if(map.getSource('kasukabe-fudesource') === undefined){
-
-            addingLayers();
-            
-        }
-
-    });
-
-    map.on('load', function() {
-
-        // From "対象地番リスト" on July 14th
-        // 
-        // "coordinates": [
-        //         139.484766,
-        //         35.448222
-        //         ],
-        // に以下を追加
-        //                 "所有者等を確知できない場合に市町村長が措置を行う旨の公示を行った日": "",
-        //
-
-        if(map.getSource('kasukabe-fudesource') === undefined){
-
-            addingLayers();
-
-        }
+        map.addLayer({
+            id: 'tsukuba-target-symbol',
+            source: 'tsukuba-target',
+            type: 'symbol',
+            paint:{
+                'text-color':
+                [
+                    "match",
+                    ["feature-state", "color"],
+                    ["#ffffff"],
+                    "#ffffff",
+                    "#ff0000"
+                ],
+            },
+            layout: {
+                'text-field':
+                ["coalesce", ["get", "地目"]],
+            }
+        });        
 
         // Create a popup, but don't add it to the map yet.
         var popup = new mapboxgl.Popup({
@@ -764,7 +736,7 @@ type="text/css"
                 function changecolor(fid) {
 
                     map.setFeatureState({
-                        source: 'kasukabe-target',
+                        source: 'tsukuba-target',
                         id: fid
                     }, {
                         color: "#a9a9a9"
@@ -774,7 +746,7 @@ type="text/css"
                 function changetext(fid) {
 
                     map.setFeatureState({
-                        source: 'kasukabe-target',
+                        source: 'tsukuba-target',
                         id: fid
                     }, {
                         color: "#ffffff"
@@ -807,7 +779,7 @@ type="text/css"
                     var options = document.querySelectorAll("#fieldtype option");
 
                     map.setFeatureState({
-                        source: 'kasukabe-fudesource',
+                        source: 'tsukuba-fudesource',
                         id: fid
                     }, {
                         color: options[select.selectedIndex].value
@@ -825,9 +797,9 @@ type="text/css"
 
             elem.className = classes.join(' ');
 
-        }
+        }        
 
-        map.on('click', 'kasukabe-target-circle', function(e) {
+        map.on('click', 'tsukuba-target-circle', function(e) {
 
             map.getCanvas().style.cursor = 'pointer';
 
@@ -861,7 +833,7 @@ type="text/css"
                 "面積",
                 "存続期間終",
                 "所在・地番",
-                "筆ポリゴン",
+                "筆ポリ中心",
                 "存続期間始",
                 "利用状況調",
                 "農地中間_1",
@@ -880,7 +852,6 @@ type="text/css"
 
             var jsonFeatures = e.features[0];
             var fid = jsonFeatures.properties.targetId;
-            
 
             // nested to array
             var displayFeatures = [jsonFeatures.properties].map(function(feat){
@@ -904,9 +875,9 @@ type="text/css"
 
             toggleSidebar('right', fid, displayFeatures, 'three');
 
-        });      
+        });  
 
-        map.on('click', 'kasukabe-fudepoints', function(e) {
+        map.on('click', 'tsukuba-fudepoints', function(e) {
 
             map.getCanvas().style.cursor = 'pointer';
 
@@ -944,15 +915,10 @@ type="text/css"
                 return displayFeat;
             });
 
-
-            // console.log(map.getStyle());
-            // console.log(map.getLayer('kasukabe-target-fudepolygon'));
-
             var features = map.queryRenderedFeatures(
                 e.point,
-                { layers: ['kasukabe-target-fudepolygon'] }
+                { layers: ['tsukuba-target-fudepolygon'] }
             );
-
 
             var fid = features[0].id;
 
@@ -985,9 +951,6 @@ type="text/css"
 
             if(!map.getSource('mapbox-gl-draw-hot')||!map.getSource('mapbox-gl-draw-cold')){
                 map.addControl(draw, 'bottom-right');
-                // console.log(map.getSource('mapbox-gl-draw-hot'));
-                // console.log(map.getSource('mapbox-gl-draw-cold'));
-                // console.log(draw.getMode());
 
                 document.getElementById('calculation-box').style.display = "block";
 
@@ -998,13 +961,11 @@ type="text/css"
                 function updateArea(e) {
                     var data = draw.getAll();
 
-                    var ptfeatures = map.queryRenderedFeatures({ layers: ['kasukabe-fudepoints'] });
-                    var polyfeatures = map.queryRenderedFeatures({ layers: ['kasukabe-target-fudepolygon'] });
+                    var ptfeatures = map.queryRenderedFeatures({ layers: ['tsukuba-fudepoints'] });
+                    var polyfeatures = map.queryRenderedFeatures({ layers: ['tsukuba-target-fudepolygon'] });
 
                     var select_all = document.querySelector("#fieldtype_all");
                     var options_all = document.querySelectorAll("#fieldtype_all option");
-
-                    // console.log(data);
 
                     var count = 0
                     ptfeatures.forEach(function(points) {
@@ -1022,14 +983,12 @@ type="text/css"
                                 var poly_t = turf.polygon(polygons.geometry.coordinates);
                                 var found_target = turf.booleanPointInPolygon(pt, poly_t);
                                 if(found_target){
-                                    // console.log(polygons.properties.筆ポリゴン);
                                     map.setFeatureState({
-                                        source: 'kasukabe-fudesource',
+                                        source: 'tsukuba-fudesource',
                                         id: polygons.id
                                     }, {
                                         color: options_all[select_all.selectedIndex].value
                                     });
-                                    // console.log(polygons.id);
                                 }
                             });
                         }

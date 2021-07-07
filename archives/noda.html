@@ -312,8 +312,16 @@ type="text/css"
     var streetstyle = 'mapbox://styles/tichimura/ckbw12q2t0ofj1ipot3uxhshn';
     var satellitestyle = 'mapbox://styles/tichimura/ckdcbaolp2yv71imlerq5njx5';
 
+	mapboxgl.accessToken = 'pk.eyJ1IjoidGljaGltdXJhIiwiYSI6ImNrcXI4bWJ6MDB4OXYyc25iNTJubjR5azUifQ.kRqYXyTdYgEcuTfz-7oqrQ';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: satellitestyle + '/draft',
+        center: [139.8420269,36.00228251],
+        zoom: 17
+    });    
+
     var directions = new MapboxDirections({
-        accessToken: 'pk.eyJ1IjoidGljaGltdXJhIiwiYSI6ImNrMnBpN3NxMzA0bGMzbnBpdmhqd2EyazQifQ.5ozS730sMWdKGe5gx32BJA',
+        accessToken: mapboxgl.accessToken,
         unit: 'metric',
         profile: 'mapbox/walking',
         language: "ja",
@@ -329,21 +337,6 @@ type="text/css"
         trash: true
         }
     });
-
-
-	mapboxgl.accessToken = 'pk.eyJ1IjoidGljaGltdXJhIiwiYSI6ImNrMnBpN3NxMzA0bGMzbnBpdmhqd2EyazQifQ.5ozS730sMWdKGe5gx32BJA';
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: satellitestyle + '/draft',
-        center: [139.8420269,36.00228251],
-        zoom: 17
-    });    
-
-
-    // 市街地
-    // mapbox://styles/tichimura/ckbw12q2t0ofj1ipot3uxhshn
-    // 衛星写真
-    // mapbox://styles/tichimura/ckdcbaolp2yv71imlerq5njx5
 
     var layerList = document.getElementById('menu');
     var inputs = layerList.getElementsByTagName('input');
